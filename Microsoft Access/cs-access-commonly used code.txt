@@ -1,0 +1,3 @@
+
+#expresiones regulares en filtros de consultas
+Como 'BND*'
