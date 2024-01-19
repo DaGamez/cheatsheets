@@ -1,0 +1,169 @@
+
+
+/* Formas de definir color en selector de tipo*/
+h1 {
+	color:orange;
+}
+
+h1 {
+	color:#FFA500;
+}
+
+h1 {
+	color:rgb(255,155,0);
+}
+
+p{
+	text-align:right;
+}	
+
+
+/* Definir atributos en selector de clase*/
+.descripcion{
+	font-weight:bold;
+	color:blue;
+}
+
+/* Definir atributos en selector de id*/
+#encabezado{
+	background-color:green;
+}
+
+/* selector de atributo*/
+a[href="www.pagina1.com"]{
+	font-size:large;
+}
+
+/* Colores por nombre:
+hay 140 nombres
+*/
+
+h1 {
+	color:orange;
+}
+/* Colores hexadecimales:
+tienen el formato #RRGGBB
+van desde 00 hasta FF, 00 ausencia de color y FF presencia total del color
+*/
+h1 {
+	color:#FF0000;
+}
+
+/* rgb:
+(red,green,blue) intensidad desde 0 hasta 255
+o porcentaje desde 0 hasta 100%
+*/
+h1 {
+	color:rgb(0,0,255);
+}
+h1 {
+	color:rgb(0%,0%,100%);
+}
+
+/* rgba:
+(red,green,blue,alpha) 
+extiende rgba
+alpha es 0.0 transparente y 1.0 es opaco
+*/
+h1 {
+	color:rgba(0,0,255,0.3);
+}
+
+/* HSL:
+Hue-matiz: grados circunf, 0 120 (verde)(rojo) 140 (azul)hasta 360
+Saturation: 0% gris hasta 100% sin mod
+Lightnes: 0% negro hasta 100% blanco
+*/
+h1 {
+	color:hsl(120,100%,20%);
+}
+
+/* HSLA:
+Hue-matiz: grados circunf, 0 120 (verde)(rojo) 140 (azul)hasta 360
+Saturation: 0% gris hasta 100% sin mod
+Lightnes: 0% negro hasta 100% blanco
+Alpha: opacidad desde 0.0 hasta 1.0
+*/
+h1 {
+	color:hsla(120,100%,20%,1);
+}
+
+
+/* Propiedades que usan color:
+background-color: color de fondo
+border-color: cambia color de borde, puede tener 4 valores en orden
+debe tener siempre border-style
+color: 
+outline-color: linea externa al borde
+
+*/
+
+h1 {
+	background-color:blue;
+	border-color:red green blue coral;
+	border-color:red green blue;
+	border-color:red green;
+	border-color:red;
+	border-style:solid;
+	color:blue;
+	outline-color:blue;
+}
+
+/* Maquetacion, el modelo de caja
+4 propiedadeS:
+contenido: contenido, un texto o imagen
+padding: entre el borde y el contenido es trans
+border: cobija contenido y padding
+margin: area fuera del borde, tambien es transparente
+*/
+div{
+	border: 15 px;
+	padding: 50 px;
+	margin: 20px;
+}
+
+/* Despliegue de contendedores:
+block por defecto: separados en bloque
+inline: uno luego del otro
+inline-block: dos bloques pero en la misma linea
+*/
+
+div{
+	display:block
+}
+
+/* Posicionamiento:
+static (defecto)
+relative: a su posicion por defecto
+absolute: referencia los valores del css
+fix: ventana del navegador
+*/
+
+div{
+	position:relative
+}
+
+/* float:
+lo manda a flotar a un lado u otro
+*/
+.photo{
+	float:left;
+}
+
+/* fuentes tipograficas:
+font-family: 
+	genericas: ej Serif
+	particulares: Time New Roman 
+font-size: pixeles o EM's valor relativo
+font-style
+font-variant
+*/
+p{
+	font-family:"Georgia",serif;
+	font-size: 50 px;
+	font-size: 3.125em ;
+	font-style: italic;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
