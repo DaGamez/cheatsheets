@@ -100,3 +100,7 @@ straight_line = lambda m,x,c: m*x+c
 straight_line(2,4,-3)
 
 
+#virtual environment from terminal
+python3 -m venv venv
+source venv/bin/activate
+
