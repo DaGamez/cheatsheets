@@ -102,5 +102,11 @@ straight_line(2,4,-3)
 
 #virtual environment from terminal
 python3 -m venv venv
+python -m venv venv
 source venv/bin/activate
+venv/Scripts/activate
+deactivate
 
+conda create --name venv python=3.9.6
+conda activate venv
+pip install -r requirements.txt

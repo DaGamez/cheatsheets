@@ -1,0 +1,83 @@
+name: Crear Rama Release
+
+on:
+  workflow_dispatch: # Se ejecuta manualmente
+    inputs:
+      version:
+        description: 'Versión de la rama a crear'
+        required: true
+        default: 'release/v1.0.0'
+
+jobs:
+  create-release-branch:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Crear rama de release
+        run: |
+          branch_name=${{ github.event.inputs.version }}
+          
+          # Check if the branch already exists
+          if git show-ref --verify --quiet "refs/heads/$branch_name"; then
+            echo "La rama '$branch_name' ya existe."
+            exit 1
+          fi
+
+          git pull
+          git checkout develop
+          git pull
+          git checkout -b "$branch_name"
+          git push --set-upstream origin "$branch_name"
+
+  validar-pruebas:
+        name: Pruebas antes de release
+        runs-on: ubuntu-latest
+        needs: create-release-branch
+        steps:
+        - name: Checkout de repositorio
+          uses: actions/checkout@v2
+        - name: Configuración de entorno de python
+          uses: actions/setup-python@v2
+          with:
+              python-version: '3.7'
+        - name: Cambio a la rama release
+          run: |
+            git branch -a
+            git pull
+            git checkout ${{ github.event.inputs.version }} 
+        - name: Instalación de librerías y dependencias
+          run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+        - name: Correr pruebas
+          id: correr-pruebas
+          run: python -m unittest discover -s tests -v
+
+  desplegar-main:
+      #si el resultado de las pruebas validar-pruebas es exitoso, se ejecuta el despliegue
+      needs: validar-pruebas
+      if: ${{ needs.validar-pruebas.result == 'success' }}
+      name: Despliegue a main
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout de repositorio
+          uses: actions/checkout@v2
+        - name: Configuración de entorno de python
+          uses: actions/setup-python@v2
+          with:
+              python-version: '3.7'
+        - name: Instalación de librerías y dependencias
+          run: |
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+        - name: Despliegue a main
+          run: |
+            git branch -a
+            git pull
+            git checkout ${{ github.event.inputs.version }}
+            git checkout main
+            git merge ${{ github.event.inputs.version }}
+            git push origin main
