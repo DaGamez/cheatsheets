@@ -1,0 +1,146 @@
+//este es un comentario en kotlin---------------------------------------------------------------------------------------------------
+
+//val para declarar variable cuyo valor no cambia nunca
+// var para una variable que puede cambiar
+var count: Int = 10
+count = 15
+val languageName: String = "Kotlin"
+
+//Int es un tipo que representa un número entero, uno de los muchos tipos numéricos que se pueden representar en Kotlin. Del mismo modo que con otros lenguajes, 
+//también puedes utilizar Byte, Short, Long, Float y Double---------------------------------------------------------------------------------------------------
+
+//inferencia de tipo---------------------------------------------------------------------------------------------------
+val languageName = "Kotlin"
+
+//declarar variables tipo anualable que inicialicen en null---------------------------------------------------------------------------------------------------
+val languageName: String? = null
+
+//if else---------------------------------------------------------------------------------------------------
+if (count == 42) {
+    println("I have the answer.")
+} else {
+    println("The answer eludes me.")
+}
+
+//otra forma de escribir---------------------------------------------------------------------------------------------------
+
+val answerString: String = if (count == 42) {
+    "I have the answer."
+} else if (count > 35) {
+    "The answer is close."
+} else {
+    "The answer eludes me."
+}
+
+println(answerString)
+
+//usando when ---------------------------------------------------------------------------------------------------
+val answerString = when {
+    count == 42 -> "I have the answer."
+    count > 35 -> "The answer is close."
+    else -> "The answer eludes me."
+}
+
+println(answerString)
+
+//condicional de nulo ---------------------------------------------------------------------------------------------------
+val languageName: String? = null
+if (languageName != null) {
+    // No need to write languageName?.toUpperCase()
+    println(languageName.toUpperCase())
+}
+
+
+//funcion ---------------------------------------------------------------------------------------------------
+fun generateAnswerString(): String {
+    val answerString = if (count == 42) {
+        "I have the answer."
+    } else {
+        "The answer eludes me"
+    }
+
+    return answerString
+}
+
+fun generateAnswerString(countThreshold: Int): String {
+    val answerString = if (count > countThreshold) {
+        "I have the answer."
+    } else {
+        "The answer eludes me."
+    }
+
+    return answerString
+}
+
+//funcion simplificada ---------------------------------------------------------------------------------------------------
+fun generateAnswerString(countThreshold: Int): String {
+    return if (count > countThreshold) {
+        "I have the answer."
+    } else {
+        "The answer eludes me."
+    }
+}
+
+fun generateAnswerString(countThreshold: Int): String = if (count > countThreshold) {
+        "I have the answer"
+    } else {
+        "The answer eludes me"
+}
+
+//funciones anonimas ---------------------------------------------------------------------------------------------------
+
+val stringLengthFunc: (String) -> Int = { input ->
+    input.length
+}
+
+
+//funciones de orden superior ---------------------------------------------------------------------------------------------------
+// funciones que toman otras funciones como argumentos
+
+fun stringMapper(str: String, mapper: (String) -> Int): Int {
+    // Invoke function
+    return mapper(str)
+}
+
+stringMapper("Android", { input ->
+    input.length
+})
+
+stringMapper("Android") { input ->
+    input.length
+}
+
+//clases ---------------------------------------------------------------------------------------------------
+
+class Car {
+    val wheels = listOf<Wheel>()
+}
+
+val car = Car() // construct a Car
+val wheels = car.wheels // retrieve the wheels value from the Car
+
+
+class Car(val wheels: List<Wheel>) // inicializar como uno quiere las propiedades
+
+// encapsulacion y funciones de clase
+class Car(val wheels: List<Wheel>) {
+
+    private val doorLock: DoorLock = ...
+
+    fun unlockDoor(key: Key): Boolean {
+        // Return true if key is valid for door lock, false otherwise
+    }
+}
+
+
+class Car(val wheels: List<Wheel>) {
+
+    private val doorLock: DoorLock = ...
+
+    var gallonsOfFuelInTank: Int = 15 // asi se expone el set sin exponer el set
+        private set
+
+    fun unlockDoor(key: Key): Boolean {
+        // Return true if key is valid for door lock, false otherwise
+    }
+}

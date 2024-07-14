@@ -1,0 +1,52 @@
+#https://www.cloudskillsboost.google/focuses/3719?parent=catalog
+#Pub/Sub: Qwik Start - Console
+
+gcloud pubsub subscriptions pull --auto-ack MySub
+
+
+#crete topic
+
+gcloud pubsub topics create myTopic
+
+#list topics
+gcloud pubsub topics list
+
+#delete topics
+gcloud pubsub topics delete Test1
+
+
+#create subscriptions
+
+gcloud  pubsub subscriptions create --topic myTopic mySubscription
+
+#list subscriptions from a topic
+
+gcloud pubsub topics list-subscriptions myTopic
+
+
+#publish message
+
+gcloud pubsub topics publish myTopic --message "Hello"
+
+#pull subscriptions
+
+gcloud pubsub subscriptions pull mySubscription --auto-ack
+
+
+gcloud pubsub subscriptions pull mySubscription --auto-ack --limit=3
+
+
+
+#USE WITH PYTHON
+#https://www.cloudskillsboost.google/focuses/2775?parent=catalog
+
+python publisher.py $GOOGLE_CLOUD_PROJECT create MyTopic
+
+python publisher.py $GOOGLE_CLOUD_PROJECT list
+
+
+
+
+
+
+

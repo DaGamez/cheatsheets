@@ -1,7 +1,63 @@
-docker run -d --cap-add sys_resource --name rp -p 8443:8443 -p 9443:9443 -p 12000:12000 redislabs/redis
+ocker run -d --cap-add sys_resource --name rp -p 8443:8443 -p 9443:9443 -p 12000:12000 redislabs/redis
 
 
 # https://redis.io/docs/install/install-stack/docker/
 docker run -d --name redis-stack-server -p 6379:6379 redis/redis-stack-server:latest
 
 docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+
+
+docker build -t your_image_name .
+
+
+## NFS
+docker run -itd --privileged --restart unless-stopped -e SHARED_DIRECTORY=/data -v /data/nfs-storage:/data -p 2049:2049 itsthenetwork/nfs-server-alpine:12
+
+docker run -d --name nfs --privileged -v /some/where/fileshare:/nfsshare -e SHARED_DIRECTORY=/nfsshare itsthenetwork/nfs-server-alpine:latest -p 2049:2049
+
+
+## NFS CLIENT
+
+mount -v -o vers=4,loud localhost:/ /mnt
+
+
+## nfs server 2
+
+mount -t nfs -o nfsvers=4 localhost:/opt/nfsserver/shared /mnt/shared
+
+
+
+# docker con ubuntu:20.04
+docker run -it --name ubuntu_server ubuntu:20.04 /bin/bash
+
+
+mkdir /var/nfs/shared_folder -p
+ls -la /var/nfs/shared_folder
+
+
+sudo ufw allow from 35.226.6.195 to any port nfs
+
+
+34.28.74.18:/var/nfs/shared_folder    /home/ubuntu/remote_folder   nfs defaults 0 0
+
+ubuntu server 1 192.168.1.66/24
+ubuntu server 2 192.168.1.67/24
+
+
+apt-get install -y iproute2
+
+
+
+#configuracion nfs server
+docker run -it --name ubuntu_server -p 2049:2049 ubuntu:latest /bin/bash
+docker run -it --name ubuntu_server_2 -p 2049:2049 ubuntu:latest /bin/bash
+
+
+apt-get update
+apt-get install nfs-kernel-server
+apt-get install -y nano
+apt-get install -y ip
+nano /etc/exports
+
+
+
