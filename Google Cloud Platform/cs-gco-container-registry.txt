@@ -1,0 +1,23 @@
+gcloud config get-value project
+
+gcloud config set project <project-id>
+
+gcloud auth configure-docker <REGION>-docker.pkg.dev
+gcloud auth configure-docker us-central1-docker.pkg.dev
+
+<REGION>-docker.pkg.dev/<ID-PROYECTO>/<NOMBRE-REPOSITORIO>/<IMAGEN>:<TAG>
+us-central1-docker.pkg.dev/miso-nube-nativa-202414/uniandes-misw-native-calculadora-app/suma:1.0
+
+docker build -t <URI> .
+docker build -t us-central1-docker.pkg.dev/miso-nube-nativa-202414/uniandes-misw-native-calculadora-app/suma:1.0 .
+docker build -t us-central1-docker.pkg.dev/miso-nube-nativa-202414/uniandes-misw-native-calculadora-app/multiplicacion:1.0 .
+docker build -t us-central1-docker.pkg.dev/miso-nube-nativa-202414/uniandes-misw-native-calculadora-app/exponencial:1.0 .
+
+
+docker push <URI>
+docker push us-central1-docker.pkg.dev/miso-nube-nativa-202414/uniandes-misw-native-calculadora-app/suma:1.0
+docker push us-central1-docker.pkg.dev/miso-nube-nativa-202414/uniandes-misw-native-calculadora-app/multiplicacion:1.0
+docker push us-central1-docker.pkg.dev/miso-nube-nativa-202414/uniandes-misw-native-calculadora-app/exponencial:1.0
+
+docker run -p 4000:4000 <URI>
+docker run -p 4000:4000 us-central1-docker.pkg.dev/miso-nube-nativa-202414/uniandes-misw-native-calculadora-app/suma:1.0

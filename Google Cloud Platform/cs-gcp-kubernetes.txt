@@ -1,0 +1,49 @@
+#conetarse al clustter en la seccion de clusters de gcp y obteniendo el comando de la opcion connect
+gcloud container clusters get-credentials cluster-final --zone us-central1-c --project miso-cloudnative
+
+miso-nube-nativa-202414
+
+gcloud compute networks create <RED> --project=<ID-PROYECTO> --subnet-mode=custom --mtu=<MTU> --bgp-routing-mode=regiona
+gcloud compute networks create vpn-tutoriales-misw --project=miso-nube-nativa-202414 --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
+
+gcloud compute networks subnets create <NOMBRE-SUBRED> --range=<RANGO-IP> --network=<RED-PADRE> --region=<REGION> --project=<ID-PROYECTO>
+gcloud compute networks subnets create red-k8s-tutoriales --range=192.168.32.0/19 --network=vpn-tutoriales-misw --region=us-central1 --project=miso-nube-nativa-202414
+
+
+gcloud components install gke-gcloud-auth-plugin
+
+
+
+
+
+
+kubectl config current-context
+
+kubectl config get-contexts
+
+
+kubectl config use-context <context-name>
+
+
+
+
+kubectl apply -f k8s-service.yml
+
+kubectl get pods
+
+kubectl get services
+
+kubectl get deployments
+
+#destruccion de despliegues y servicios
+kubectl delete all --all -n default
+
+#destruccion de ingress
+kubectl delete ingress <gateway-name>
+kubectl delete ingress gateway-ingress-8
+
+kubectl apply -f k8s-deployments.yml
+
+kubectl get all -n [namespace]
+
+kubectl delete all --all -n [namespace]

@@ -1,4 +1,75 @@
-ocker run -d --cap-add sys_resource --name rp -p 8443:8443 -p 9443:9443 -p 12000:12000 redislabs/redis
+
+
+docker --version
+docker container list
+docker ps
+docker image list
+docker build -t <tag> --file
+docker run -d -p <host- ➥ port>:<container-port> ➥ <tag> 
+docker stop <container-id>
+docker logs <container id>
+docker stats <container id>
+
+#cargar imagen
+docker pull nginx
+
+#procesos dentro de contenedor
+docker top <container id> 
+
+#informacion de las construccion
+docker inspect <container id>
+
+#matar a las malas
+docker kill
+
+#lsitado de imagenes
+docker images
+
+#volumes
+docker volume ls
+docker run -it -v data ubuntu
+docker run -t -volumes-from <c> ubuntu
+docker run -t -v v1:/data ubuntu
+
+#binding
+docker run -t -v <pathhost>:<path conatainer> ubuntu
+docker run --mount type=bind, source=<pathhost>, target=<pathcontainer> ubuntu
+
+#almacenamiento temporal
+docker run -t -tmpfs /datos ubuntu
+
+docker ps
+docker port <container id>
+docker inspect <container id>
+
+#network
+docker network ls
+docker network inspect <network>
+docker network create <nombre>
+docker run -b 8888:80 -network <red> nginx
+docker run -b 8888:80 -network container:<host|id> nginx
+
+#run bash inside docker
+docker run -i -t ubuntu /bin/bash
+
+#run bash inside docker container with root user (0)
+docker exec -u 0 -it <container-id> /bin/bash
+
+#dentro de contenedor
+FROM
+COPY 
+ADD
+RUN
+CMD
+ENV
+WORKDIR
+EXPOSE
+ENTRYPOINT
+VOLUME
+
+
+
+Docker run -d --cap-add sys_resource --name rp -p 8443:8443 -p 9443:9443 -p 12000:12000 redislabs/redis
 
 
 # https://redis.io/docs/install/install-stack/docker/
@@ -9,6 +80,9 @@ docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:lat
 
 docker build -t your_image_name .
 
+#ENVIRONMENT VARIABLE
+
+docker run -e MY_ENV_VAR=value my_image
 
 ## NFS
 docker run -itd --privileged --restart unless-stopped -e SHARED_DIRECTORY=/data -v /data/nfs-storage:/data -p 2049:2049 itsthenetwork/nfs-server-alpine:12
@@ -59,5 +133,6 @@ apt-get install -y nano
 apt-get install -y ip
 nano /etc/exports
 
+#
 
 

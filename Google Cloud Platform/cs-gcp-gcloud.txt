@@ -1,0 +1,11 @@
+
+
+gcloud config get-value project
+
+gcloud config set project <project-id>
+
+kubectl get pods
+
+kubectl get services
+
+kubectl get deployments

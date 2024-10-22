@@ -1,0 +1,23 @@
+docker-compose --version
+
+
+docker-compose up -d -f <filename>
+docker-compose down
+docker-compose down --rmi all
+
+#state of containers
+docker-compose ps
+
+#list processes running
+docker-compose top
+
+docker-compose stop
+
+docker-compose rm
+
+docker-compose restart
+
+networks:
+  over-net:
+  driver: overlay
+  attachable: true

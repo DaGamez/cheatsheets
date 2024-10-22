@@ -1,4 +1,3 @@
-
 #module os
 import os
 os.getcwd() #get current working directory
@@ -8,6 +7,14 @@ os.chdir(wd) #change working directory
 #module sys
 import sys
 sys.path.append('/package/path') #adds package path to system path
+
+
+#dictionaries
+d = {'apple':4, 'orange':5, 'pear':6, 'pineapple':7}
+d = dict(apple=4, orange=5, pear=6, pineapple=7)
+
+
+
 
 #slicing lists
 a=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
@@ -102,9 +109,11 @@ straight_line(2,4,-3)
 
 #virtual environment from terminal
 python3 -m venv venv
+python3 -m venv ~/.<repo-name>
 python -m venv venv
 source venv/bin/activate
 venv/Scripts/activate
+which python3 #saber en q ambiente se está parado
 deactivate
 
 conda create --name venv python=3.9.6

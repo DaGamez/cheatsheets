@@ -1,0 +1,10 @@
+#new project 
+ng new project-name
+
+#agregar angular al proyecto
+ng add @angular/material
+
+"@angular/material/prebuilt-themes/deeppurple-amber.css",
+
+
+#material
