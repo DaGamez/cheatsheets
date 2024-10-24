@@ -24,7 +24,9 @@ sudo tasksel #choose debian
 
 sudo reboot
 
-#
+#add buttons min,max, close to window
+gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+
 
 
 

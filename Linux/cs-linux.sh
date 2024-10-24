@@ -13,3 +13,8 @@ mkdir <directory-name>
 vim <file-path>
 #inside vim to copy paste :set paste
 
+
+#environment variables
+echo $PATH
+
+

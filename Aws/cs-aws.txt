@@ -1,0 +1,33 @@
+aws --version
+
+#list iam users
+aws iam list-users
+aws iam list-users --output text | cut -f 6
+
+# crate new user
+aws iam create-user \
+    --user-name aws-admin2
+
+#configure a new profile
+aws configure --profile profile_name
+
+#set current profile
+export AWS_PROFILE=your_profile_name
+
+
+#list s3 buckets
+aws s3 ls
+
+# list all security groups
+aws ec2 describe-security-groups
+
+#add ip to security group
+aws ec2 authorize-security-group-ingress --group-id sg-08d03c00ad99deba0 --protocol tcp --port 5432 --cidr 0.0.0.0/0
+
+#remove ip from security group
+aws ec2 revoke-security-group-ingress \
+    --group-id sg-08d03c00ad99deba0 \
+    --protocol tcp \
+    --port 5432 \
+    --cidr 0.0.0.0/0
+
