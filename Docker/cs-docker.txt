@@ -133,6 +133,11 @@ apt-get install -y nano
 apt-get install -y ip
 nano /etc/exports
 
-#
+#pg admin
+docker run --network host \
+    -e "PGADMIN_DEFAULT_EMAIL=postgres@postgres.com" \
+    -e "PGADMIN_DEFAULT_PASSWORD=postgres" \
+    --name pgadmin4 \
+    -d dpage/pgadmin4
 
 
