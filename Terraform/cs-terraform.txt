@@ -1,0 +1,53 @@
+#version
+terraform -v
+
+#listado comandos
+terraform -help
+
+#ensures providers 
+terraform init
+
+
+terraform plan
+
+#desired state
+terraform apply
+
+#development environment
+terraform destroy
+
+#convert tabs and spaces in file
+terraform fmt
+
+#  rarely used, init
+terraform get
+
+#dependencies
+terraform graph
+
+#tedious, import infra outside
+terraform import
+
+terraform output
+
+terraform providers
+
+terraform refresh
+
+# usually sign of bad pract
+terraform taint
+
+#alternative version of the space
+#diferrent , prod dev and staging
+terraform workspace
+
+
+
+
+
+
+
+
+
+
+

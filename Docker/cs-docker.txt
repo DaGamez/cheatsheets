@@ -134,10 +134,20 @@ apt-get install -y ip
 nano /etc/exports
 
 #pg admin
-docker run --network host \
-    -e "PGADMIN_DEFAULT_EMAIL=postgres@postgres.com" \
-    -e "PGADMIN_DEFAULT_PASSWORD=postgres" \
+docker run --network control_ingreso_network \
+    -p 80:80 \
+    -e PGADMIN_DEFAULT_EMAIL=postgres@postgres.com \
+    -e PGADMIN_DEFAULT_PASSWORD=postgres \
     --name pgadmin4 \
+    -d dpage/pgadmin4
+	
+#pg admin con volumen falla	
+sudo docker run --network control_ingreso_network \
+    -p 80:80 \
+    -e PGADMIN_DEFAULT_EMAIL=postgres@postgres.com \
+    -e PGADMIN_DEFAULT_PASSWORD=postgres \
+    --name pgadmin4_with_volume \
+    -v pgadmin_storage:/var/lib/pgadmin/storage \
     -d dpage/pgadmin4
 
 
