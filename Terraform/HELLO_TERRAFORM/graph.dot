@@ -1,0 +1,9 @@
+digraph G {
+  rankdir = "RL";
+  node [shape = rect, fontname = "sans-serif"];
+  "data.aws_availability_zones.available" [label="data.aws_availability_zones.available"];
+  "data.aws_caller_identity.current" [label="data.aws_caller_identity.current"];
+  "aws_s3_bucket.bucket1" [label="aws_s3_bucket.bucket1"];
+  "aws_s3_bucket.bucket2" [label="aws_s3_bucket.bucket2"];
+  "aws_s3_bucket.bucket2" -> "data.aws_caller_identity.current";
+}

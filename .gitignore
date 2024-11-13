@@ -1,1 +1,4 @@
 *.terraform*
+Terraform/HELLO_TERRAFORM/terraform.tfstate
+Terraform/HELLO_TERRAFORM/terraform.tfstate.backup
+Terraform/HELLO_TERRAFORM/example.tfplan

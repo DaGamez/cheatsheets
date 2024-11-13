@@ -9,9 +9,11 @@ terraform init
 
 
 terraform plan
+terraform plan -out example.tfplan
 
 #desired state
 terraform apply
+terraform apply example.tfplan
 
 #development environment
 terraform destroy
@@ -41,7 +43,8 @@ terraform taint
 #diferrent , prod dev and staging
 terraform workspace
 
-
+terraform state list
+terraform state show aws_s3_bucket.bucket1
 
 
 
